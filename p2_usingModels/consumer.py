@@ -20,13 +20,19 @@ with open('scalar.pickle', 'rb') as f:
     scalar = pickle.load(f)
 
 
+
+
 def makeGuess(val:str )-> str:
+    global scalar
+    global clf_loaded
+    val = val.lstrip("b'")
     vals=val.split('/')
     vals.pop()  # sondaki boş elamanı yok et
-    val_array = [int(part) for part in vals if part.isdigit()]
+    print(vals)
+    val_array = [float(part) for part in vals]
     new_banknote = np.array([val_array[0], val_array[1], val_array[2], val_array[3]], ndmin=2)
     new_banknote = scalar.transform(new_banknote)
-    return clf_loaded.predict(new_banknote)[0]
+    return f'Prediction:  Class{clf_loaded.predict(new_banknote)[0]}'
 
 
 
@@ -41,8 +47,9 @@ def main():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        guess = makeGuess()
-        print(" [x] Done" + guess)
+        guess = makeGuess(str(body))
+        print(" [x] Done")
+        print(guess)
         # görev tamamlanınca yenisini al
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -53,7 +60,7 @@ def main():
     channel.start_consuming()
 
 
-"""
+
 if __name__ == '__main__':
     try:
         main()
@@ -64,4 +71,3 @@ if __name__ == '__main__':
         except SystemExit:
             os._exit(0)
 
-"""

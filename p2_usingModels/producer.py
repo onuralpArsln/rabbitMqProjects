@@ -22,7 +22,8 @@ for i in range(30):
     # verilen min ve max limitler arasında rastgele değer oluşturup / ile ayırarak yan yana yazdık öbür tarafta parse 
     # / karakterine göre yapılacak. 
     for j in range(4):
-        message += str( random.uniform(limMin[j], limMax[j]))
+        random_value= str(random.uniform(limMin[j], limMax[j]))
+        message += random_value[:6]
         message += "/"
 
 
