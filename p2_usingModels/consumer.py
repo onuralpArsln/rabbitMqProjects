@@ -22,7 +22,7 @@ with open('scalar.pickle', 'rb') as f:
 
 def makeGuess(val:str )-> str:
     vals=val.split('/')
-    vals.pop() #sondaki boş elamanı yok et
+    vals.pop()  # sondaki boş elamanı yok et
     val_array = [int(part) for part in vals if part.isdigit()]
     new_banknote = np.array([val_array[0], val_array[1], val_array[2], val_array[3]], ndmin=2)
     new_banknote = scalar.transform(new_banknote)
@@ -41,10 +41,8 @@ def main():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
-
-        # Rastgele süre beklemeye sebep olarak zaman alan işlemi taklit ediyoruz
-        time.sleep(0.3 * random.randint(0, 16))
-        print(" [x] Done")
+        guess = makeGuess()
+        print(" [x] Done" + guess)
         # görev tamamlanınca yenisini al
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -65,4 +63,4 @@ if __name__ == '__main__':
         except SystemExit:
             os._exit(0)
 
-            """
+"""
