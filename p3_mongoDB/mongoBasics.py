@@ -3,6 +3,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 ## bu git ignorelandı güvenlik amaçlı 
+##bu directorye şifreni password isimli bir dosyada password değişkenine atarak koyarasan otamtik çeker ama gitignorelamayı unutma
 import password as password
 
 uri = "mongodb+srv://onuralparslan:"+password.password+"@datalogcluster.pyxjkxs.mongodb.net/?appName=dataLogCluster"
