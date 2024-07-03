@@ -4,14 +4,15 @@ from pymongo.server_api import ServerApi
 
 ## bu git ignorelandı güvenlik amaçlı 
 ##bu directorye şifreni password isimli bir dosyada password değişkenine atarak koyarasan otamtik çeker ama gitignorelamayı unutma
-import password as password
+from password import yourPasswordHere
 
-uri = "mongodb+srv://onuralparslan:"+password.password+"@datalogcluster.pyxjkxs.mongodb.net/?appName=dataLogCluster"
+
+uri = "mongodb+srv://onuralparslan:"+yourPasswordHere+"@datalogcluster.pyxjkxs.mongodb.net/?appName=dataLogCluster"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
-# Send a ping to confirm a successful connection
+# ping atarak bağlantı kontrol 
 try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
