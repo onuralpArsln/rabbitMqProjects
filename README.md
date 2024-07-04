@@ -1,4 +1,4 @@
-## RAbbit MQ Projeleri
+## Rabbit MQ Projeleri
 
 Bu read me dosyası genel olarak projelerin amaçlarını anlatmaktadır. Detaylı bilgi proje klasörlerinde bulunan read me dosyalarında yazmaktadır.
 
